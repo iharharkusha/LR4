@@ -69,12 +69,7 @@ int main() {
         }
         //основной код
         unsigned long long* a = (unsigned long long*)malloc(n * n * sizeof(unsigned long long));    
-        // Проверка на успешное выделение памяти
-        if (a == NULL) {
-            fprintf(stderr, "Ошибка выделения памяти.\n");
-            return 1;
-        }
-        // Инициализация массива
+
         for (long long i = 0; i < n * n; i++) {
             a[i] = 0;
         }
@@ -118,7 +113,7 @@ int main() {
         if (n % 2 != 0) {
             StepMetod(n, n, 0, 0, a);
         }
-        // Вывод магического квадрата
+        //вывод
         PrintMagicSquare(a, n);   
         free(a);
     }
