@@ -1,37 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-
-#define uint unsigned int
-
-#define true 1
-#define false 0
-
-const int INF = 2000000000;
-
-uint readIntegerInLine() {
-    uint inputValue;
-    char term;
-    if (scanf("%d%c", &inputValue, &term) != 2 || term != '\n') {
-        uint c;
-        while ((c = getchar()) != '\n' && c != EOF) {
-        }
-        return -INF;
-    }
-    return inputValue;
-}  
-
-void printCorrect(uint val) {
-    uint last_digit = val % 10, last_two = val % 100;
-    if (last_digit == 1 && last_two != 11) {
-        printf("Введите %d число для заполнения массива\n", val);
-    }
-    else if (last_digit == 2 || last_digit == 3 || last_digit == 4) {
-        printf("Введите %d числа для заполнения массива\n", val);
-    }
-    else {
-        printf("Введите %d чисел для заполнения массива\n", val);
-    }
-}
+#include <stdbool.h>
+#include "main.h"
 
 int main() {
     printf("Задание 4. Определить диагональ с наибольшей суммой чисел\n");
@@ -115,4 +85,29 @@ int main() {
         }
     }
     return 0;
+}
+
+uint readIntegerInLine() {
+    uint inputValue;
+    char term;
+    if (scanf("%d%c", &inputValue, &term) != 2 || term != '\n') {
+        uint c;
+        while ((c = getchar()) != '\n' && c != EOF) {
+        }
+        return -INF;
+    }
+    return inputValue;
+}  
+
+void printCorrect(uint val) {
+    uint last_digit = val % 10, last_two = val % 100;
+    if (last_digit == 1 && last_two != 11) {
+        printf("Введите %d число для заполнения массива\n", val);
+    }
+    else if (last_digit == 2 || last_digit == 3 || last_digit == 4) {
+        printf("Введите %d числа для заполнения массива\n", val);
+    }
+    else {
+        printf("Введите %d чисел для заполнения массива\n", val);
+    }
 }

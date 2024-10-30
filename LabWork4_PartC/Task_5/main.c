@@ -1,67 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
-const int INF = 2000000000;
-
-int readIntegerInLine() {
-    int inputValue;
-    char term;
-    if (scanf("%d%c", &inputValue, &term) != 2 || term != '\n') {
-        int c;
-        while ((c = getchar()) != '\n' && c != EOF) {
-        }
-        return -INF;
-    }
-    return inputValue;
-}  
-
-char readCharInLine() {
-    char inputValue;
-    char term;
-    if (scanf(" %c%c", &inputValue, &term) != 2 || term != '\n') {
-        int c;
-        while ((c = getchar()) != '\n' && c != EOF) {
-        }
-        return '\0';
-    }
-    return inputValue;
-}
-
-int getTotalMinesAround(char **field, int rows, int cols, int i, int j) {
-    int total_mines_around = 0;
-    for (int x = i - 1; x <= i + 1; x++) {
-        for (int y = j - 1; y <= j + 1; y++) {
-            if (x >= 0 && x <= rows - 1 && y >= 0 && y <= cols - 1 && !(x == i && y == j)) {
-                if (field[x][y] == '*') {
-                    total_mines_around++;
-                }
-            }
-        }
-    }
-    return total_mines_around;
-}
-
-void printField(char **field, int rows, int cols) {
-    printf("\n");
-    printf("Сгенерированное поле:\n");
-    for (int i = 0; i < rows; i++) {
-        for (int j = 0; j < cols; j++) {
-            printf("%c\t", field[i][j]);
-        }
-        printf("\n");
-    }
-    printf("\n");
-}
-
-void freeMemory(char **arr, int rows) {
-    for (int i = 0; i < rows; i++) {
-        free(arr[i]);
-        arr[i] = NULL;
-    }
-    free(arr);
-    arr = NULL;
-}
+#include "main.h"
 
 int main() {
     printf("Задание 5. Сгенерировать поле для игры в сапера\n");
@@ -143,4 +83,61 @@ int main() {
         freeMemory(field_copy, rows);  //чистим память 
     }
     return 0;
+}
+
+int readIntegerInLine() {
+    int inputValue;
+    char term;
+    if (scanf("%d%c", &inputValue, &term) != 2 || term != '\n') {
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF) {
+        }
+        return -INF;
+    }
+    return inputValue;
+}  
+
+char readCharInLine() {
+    char inputValue;
+    char term;
+    if (scanf(" %c%c", &inputValue, &term) != 2 || term != '\n') {
+        int c;
+        while ((c = getchar()) != '\n' && c != EOF) {
+        }
+        return '\0';
+    }
+    return inputValue;
+}
+
+int getTotalMinesAround(char **field, int rows, int cols, int i, int j) {
+    int total_mines_around = 0;
+    for (int x = i - 1; x <= i + 1; x++) {
+        for (int y = j - 1; y <= j + 1; y++) {
+            if (x >= 0 && x <= rows - 1 && y >= 0 && y <= cols - 1 && !(x == i && y == j)) {
+                if (field[x][y] == '*') {
+                    total_mines_around++;
+                }
+            }
+        }
+    }
+    return total_mines_around;
+}
+
+void printField(char **field, int rows, int cols) {
+    printf("\n");
+    printf("Сгенерированное поле:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%c\t", field[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void freeMemory(char **arr, int rows) {
+    for (int i = 0; i < rows; i++) {
+        free(arr[i]);
+    }
+    free(arr);
 }
