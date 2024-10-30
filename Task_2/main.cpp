@@ -1,17 +1,5 @@
 #include <iostream>
-
-const int INF = 2000000000;
-
-int readIntegerInLine() {
-    int inputValue;
-    if (!(std::cin >> inputValue) || (std::cin.peek() != '\n')) {
-        std::cin.clear();
-        while (std::cin.get() != '\n') {
-        }
-        return -INF;
-    }
-    return inputValue;
-}
+#include "main.h"
 
 int main() {
     std::cout << "Задание 2. Вариант 6. Посчитать количество четных элементов главной и побочной диагоналей матрицы\n";
@@ -65,23 +53,22 @@ int main() {
             }
             break;
         }
-        int cnt1 = 0; 
-        int cnt2 = 0;
+        int cnt1 = 0, cnt2 = 0;
         std::cout << "Исходная матрица:\n";
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 std::cout << mtrx[i][j] << '\t';
-                //главная диагональ
-                if (i == j) {
-                    if (mtrx[i][j] % 2 == 0) {
+                if (mtrx[i][j] % 2 == 0) {
+                    //главная диагональ
+                    if (i == j) {
                         cnt1 += 1;
                     }
-                }
-                //побочная 
-                if (i + j == col - 1) {
-                    if (mtrx[i][j] % 2 == 0) {
-                        cnt2 += 1;
-                    }
+                    //побочная 
+                    else if (i + j == col - 1) {
+                        if (mtrx[i][j] % 2 == 0) {
+                            cnt2 += 1;
+                        }
+                    }    
                 }
             }
             std::cout << '\n';
@@ -90,4 +77,15 @@ int main() {
         std::cout << "Кол-во четных элементов побочной диагонали: " << cnt2 << '\n';        
     }    
     return 0;
+}
+
+int readIntegerInLine() {
+    int inputValue;
+    if (!(std::cin >> inputValue) || (std::cin.peek() != '\n')) {
+        std::cin.clear();
+        while (std::cin.get() != '\n') {
+        }
+        return -INF;
+    }
+    return inputValue;
 }
