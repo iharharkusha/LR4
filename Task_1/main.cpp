@@ -1,42 +1,5 @@
 #include <iostream>
-
-const int INF = 2000000000;
-
-int readIntegerInLine() {
-    int inputValue;
-    if (!(std::cin >> inputValue) || (std::cin.peek() != '\n')) {
-        std::cin.clear();
-        while (std::cin.get() != '\n') {
-        }
-        return -INF;
-    }
-    return inputValue;
-}
-
-void printCorrect(int val) {
-    int last_digit = val % 10, last_two = val % 100;
-    if (last_digit == 1 && last_two != 11) {
-        std::cout << "Введите " << val << " число для заполнения массива:\n";
-    }
-    else if (last_digit == 2 || last_digit == 3 || last_digit == 4) {
-        std::cout << "Введите " << val << " числа для заполнения массива:\n";
-    }
-    else {
-        std::cout << "Введите " << val << " чисел для заполнения массива:\n";
-    }
-    return;
-}
-
-void printCorrectShift(int k) {
-    int last_digit = k % 10, last_two = k % 100;
-    if (last_digit == 1 && last_two != 11) {
-        std::cout << "Массив после " << k << " сдвига:\n";
-    }
-    else {
-        std::cout << "Массив после " << k << " сдвигов:\n";
-    }
-    return;
-}
+#include "main.h"
 
 int main() {
     std::cout << "Задание 1. Вариант 6. Сдвинуть элементы массива циклически на п позиций влево\n";
@@ -65,8 +28,8 @@ int main() {
         int arr[arrSize];
         int curr_num;
         int i = 0; 
+        printCorrect(arrSize);
         while (true) {
-            printCorrect(arrSize);
             if (i == arrSize) {
                 break;
             }
@@ -109,4 +72,40 @@ int main() {
         std::cout << '\n';
     }    
     return 0;
+}
+
+int readIntegerInLine() {
+    int inputValue;
+    if (!(std::cin >> inputValue) || (std::cin.peek() != '\n')) {
+        std::cin.clear();
+        while (std::cin.get() != '\n') {
+        }
+        return -INF;
+    }
+    return inputValue;
+}
+
+void printCorrect(int val) {
+    int last_digit = val % 10, last_two = val % 100;
+    if (last_digit == 1 && last_two != 11) {
+        std::cout << "Введите " << val << " число для заполнения массива:\n";
+    }
+    else if (last_digit == 2 || last_digit == 3 || last_digit == 4) {
+        std::cout << "Введите " << val << " числа для заполнения массива:\n";
+    }
+    else {
+        std::cout << "Введите " << val << " чисел для заполнения массива:\n";
+    }
+    return;
+}
+
+void printCorrectShift(int k) {
+    int last_digit = k % 10, last_two = k % 100;
+    if (last_digit == 1 && last_two != 11) {
+        std::cout << "Массив после " << k << " сдвига:\n";
+    }
+    else {
+        std::cout << "Массив после " << k << " сдвигов:\n";
+    }
+    return;
 }
