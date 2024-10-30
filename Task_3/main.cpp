@@ -1,57 +1,5 @@
 #include <iostream>
-
-const int INF = 2000000000;
-
-int readIntegerInLine() {
-    int inputValue;
-    if (!(std::cin >> inputValue) || (std::cin.peek() != '\n')) {
-        std::cin.clear();
-        while (std::cin.get() != '\n') {
-        }
-        return -INF;
-    }
-    return inputValue;
-}
-
-void getPoints(int **mtrx, int N, int M) {
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < M; j++) {
-            int curr = mtrx[i][j];
-            bool rowMax = true;
-            for (int k = 0; k < M; k++) {
-                if (mtrx[i][k] > curr) {
-                    rowMax = false;
-                    break;
-                }
-            }
-            bool rowMin = true;
-            for (int k = 0; k < M; k++) {
-                if (mtrx[i][k] < curr) {
-                    rowMin = false;
-                    break;
-                }
-            }
-            bool colMax = true;
-            for (int k = 0; k < N; k++) {
-                if (mtrx[k][j] > curr) {
-                    colMax = false;
-                    break;
-                }
-            }
-            bool colMin = true;
-            for (int k = 0; k < N; k++) {
-                if (mtrx[k][j] < curr) {
-                    colMin = false;
-                    break;
-                }
-            }
-            if ((rowMax && colMin) || (rowMin && colMax)) {
-                std::cout << "Седловая точка\n";
-                std::cout << "i = " << i << '\t' << "j = " << j << '\n';
-            }
-        }
-    }
-}
+#include "main.h"
 
 int main() {
     std::cout << "Задание 3. Вариант 6. Для заданной целочисленной матрицы размером NxM вывести индексы всех её седловых точек\n";
@@ -121,4 +69,55 @@ int main() {
         mtrx = nullptr;
     }
     return 0;
+}
+
+int readIntegerInLine() {
+    int inputValue;
+    if (!(std::cin >> inputValue) || (std::cin.peek() != '\n')) {
+        std::cin.clear();
+        while (std::cin.get() != '\n') {
+        }
+        return -INF;
+    }
+    return inputValue;
+}
+
+void getPoints(int **mtrx, int N, int M) {
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            int curr = mtrx[i][j];
+            bool rowMax = true;
+            for (int k = 0; k < M; k++) {
+                if (mtrx[i][k] > curr) {
+                    rowMax = false;
+                    break;
+                }
+            }
+            bool rowMin = true;
+            for (int k = 0; k < M; k++) {
+                if (mtrx[i][k] < curr) {
+                    rowMin = false;
+                    break;
+                }
+            }
+            bool colMax = true;
+            for (int k = 0; k < N; k++) {
+                if (mtrx[k][j] > curr) {
+                    colMax = false;
+                    break;
+                }
+            }
+            bool colMin = true;
+            for (int k = 0; k < N; k++) {
+                if (mtrx[k][j] < curr) {
+                    colMin = false;
+                    break;
+                }
+            }
+            if ((rowMax && colMin) || (rowMin && colMax)) {
+                std::cout << "Седловая точка\n";
+                std::cout << "i = " << i << '\t' << "j = " << j << '\n';
+            }
+        }
+    }
 }
