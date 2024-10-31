@@ -59,7 +59,7 @@ int main() {
             }
             printf("%d ", arr[indx]);
             if (k == size - 1) {
-                printf("\n");
+                printf("\n");   
             }
             if (k == size - 1 && j == size - 1) {
                 printf("\n");
