@@ -2,3 +2,4 @@ main
 algorithm
 .vscode
 test_main
+main.o

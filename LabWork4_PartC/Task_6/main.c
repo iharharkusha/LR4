@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "main.h"
+#include <gtest/gtest.h>
 
 int main() {
     printf("Задание 6. Сгенерировать магический квадрат\n");
@@ -46,7 +47,7 @@ int main() {
                 printf("%u ", a[i][j]);
             }
             printf("\n");
-        }
+        }   
         for (unsigned int i = 0; i < size; i++) {
             free(a[i]);
             a[i] = NULL;
@@ -54,6 +55,7 @@ int main() {
         free(a);
         a = NULL;
     }
+    RUN_ALL_TESTS();
     return 0;
 }
 
@@ -196,3 +198,9 @@ void MethodForEvenEven(unsigned int **arr, unsigned int size) {
         }
     }
 }
+
+// int* arr = (int*) malloc(10 * sizeof(int)); // Выделяет память для массива из 10 целых чисел
+// int* ptr = new int;           // Выделение памяти для одного int без инициализации
+// int* ptr = new int(5);        // Выделение памяти и инициализация значением 5
+// int* arr = (int*) calloc(10, sizeof(int)); // Выделяет память для массива из 10 целых чисел и инициализирует нулями
+// arr = (int*) realloc(arr, 20 * sizeof(int)); // Изменяет размер массива на 20 элементов
